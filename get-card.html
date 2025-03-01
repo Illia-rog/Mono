@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отримати картку - monobank</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px; /* Обмежуємо ширину для ноутбуків */
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        /* Стилі для карток */
+        .card-selection-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .card-option:hover {
+            background: #444;
+        }
+
+        .card-option img {
+            height: 50px;
+        }
+
+        .card-option p {
+            font-size: 1.4rem; /* Збільшено розмір шрифту */
+            color: #fff;
+            font-weight: 600; /* Жирний шрифт для кращої видимості */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Тінь для тексту */
+        }
+
+        /* Стилі для кнопки "Продовжити" */
+        .continue-button-container {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .continue-button {
+            padding: 15px 30px;
+            background: #ff4c4c;
+            color: white;
+            font-size: 1.4rem; /* Збільшено розмір шрифту */
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        .continue-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Стилі для форми номеру телефону */
+        .form-container {
+            max-width: 500px; /* Збільшуємо для ноутбуків */
+            margin: 50px auto;
+            background: #ccc; /* Сірий фон */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .phone-input-container {
+            display: flex;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.4rem; /* Збільшено шрифт */
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .prefix {
+            color: #aaa;
+            font-size: 1.4rem; /* Збільшено шрифт */
+        }
+
+        input[type="tel"] {
+            padding: 10px;
+            font-size: 1.4rem; /* Збільшено шрифт */
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            flex: 1;
+            outline: none;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background: #ff4c4c;
+            color: white;
+            font-size: 1.4rem; /* Збільшено шрифт */
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Модальне вікно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #2e2e2e;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            margin: 20% auto;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .modal button {
+            margin-top: 20px;
+            background: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        /* Стилі для заголовка з ім'ям Михайло */
+        .invite-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .invite-container h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .invite-container p {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .invite-container img {
+            width: 150px; /* Збільшено розмір картинки */
+            height: 150px; /* Збільшено розмір картинки */
+            border-radius: 50%;
+            margin-top: 20px;
+            object-fit: cover; /* Щоб зображення коректно обрізалося */
+        }
+
+        /* Медіа-запит для екрану ноутбука */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 750px; /* Збільшено максимальну ширину для ноутбука */
+            }
+
+            .form-container {
+                max-width: 600px; /* Збільшено для ноутбуків */
+            }
+
+            .card-option p {
+                font-size: 1.5rem; /* Збільшено розмір шрифту */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Секція вибору картки -->
+<div class="container">
+    <div class="card-selection-container" id="card-selection">
+        <h2>Виберіть тип картки</h2>
+
+        <div class="card-option" onclick="selectCard('Чорна картка')">
+            <img src="Іменна_картка_monobank.png" alt="Чорна картка">
+            <p>Чорна картка</p>
+        </div>
+
+        <div class="card-option" onclick="selectCard('Біла картка')">
+            <img src="cards.png" alt="Біла картка">
+            <p>Біла картка</p>
+        </div>
+
+        <div class="card-option" onclick="selectCard('Platinum картка')">
+            <img src="4-two-cards-one-account--top.png" alt="Platinum картка">
+            <p>Platinum картка</p>
+        </div>
+
+        <div class="card-option" onclick="selectCard('IRON картка')">
+            <img src="iron.png" alt="IRON картка">
+            <p>IRON картка</p>
+        </div>
+
+        <div class="continue-button-container" id="continue-button-container">
+            <button class="continue-button" onclick="showPhoneForm()">Продовжити</button>
+        </div>
+    </div>
+</div>
+
+<!-- Секція введення номеру телефону -->
+<div class="form-container" id="phone-form" style="display:none;">
+    <!-- Заголовок і картинка -->
+    <div class="invite-container">
+        <h1>Михайло запрошує вас в monobank</h1>
+        <p>Отримайте персональне посилання на телефон, установіть застосунок та активуйте картку, і ви обидва отримаєте по 50 грн на рахунок кешбека.</p>
+        <img src="https://monobank.ua/assets/hidden-B3Q_kNxM.avif" alt="Михайло" /> <!-- Замінив на ваше зображення -->
+    </div>
+
+    <h2>Введіть номер телефону</h2>
+    <form onsubmit="showModal(event)">
+        <label for="phone">Номер телефону</label>
+        <div class="phone-input-container">
+            <span class="prefix">+380</span>
+            <input type="tel" id="phone" maxlength="9" placeholder="__ ___ __ __" required oninput="validatePhoneInput(this)">
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Продовжити</button>
+        </div>
+    </form>
+</div>
+
+<!-- Модальне вікно -->
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <p>Наш QR-кіт відправив вам СМС з посиланням на завантаження застосунку. <br> Будь ласка, перевірте вхідні повідомлення 😉</p>
+        <button onclick="closeModal()">Дякую</button>
+    </div>
+</div>
+
+<script>
+    function selectCard(cardName) {
+        document.getElementById('continue-button-container').style.display = 'block'; // Показуємо кнопку продовження
+    }
+
+    function showPhoneForm() {
+        document.getElementById('card-selection').style.display = 'none'; // Приховуємо вибір картки
+        document.getElementById('phone-form').style.display = 'block'; // Показуємо форму введення номеру телефону
+    }
+
+    function validatePhoneInput(input) {
+        input.value = input.value.replace(/\D/g, ''); // Забороняє нечислові символи
+        if (input.value.length > 9) {
+            input.value = input.value.slice(0, 9); // Обмежує до 9 цифр
+        }
+    }
+
+    function showModal(event) {
+        event.preventDefault(); // Запобігає перезавантаженню сторінки
+        document.getElementById('successModal').style.display = 'block'; // Відкриває модальне вікно
+    }
+
+    function closeModal() {
+        document.getElementById('successModal').style.display = 'none'; // Закриває модальне вікно
+    }
+</script>
+
+</body>
+</html>

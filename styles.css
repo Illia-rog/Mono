@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tektur', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    line-height: 1.6;
+    height: 100%;
+    overflow-y: auto;
+}
+
+header {
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.top-header {
+    background-color: #333;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.top-header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.top-header li {
+    display: inline;
+}
+
+.top-header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    transition: color 0.3s;
+}
+
+.top-header a:hover {
+    color: #ff4c4c;
+}
+
+.top-header img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.main-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 50px 10%;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h2 {
+    font-size: 2.5rem;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.button-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-container a:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-image img {
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.card-image img:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #aaa;
+    background: #000;
+}
+
+.how-to-order {
+    background: #2e2e2e;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.how-to-order h2 {
+    font-size: 2.5rem;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.how-to-order ol {
+    font-size: 1.2rem;
+    list-style-position: inside;
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+}
+
+.how-to-order ol li {
+    margin-bottom: 15px;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.why-monobank {
+    background: #2e2e2e;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.why-monobank h2 {
+    font-size: 2.5rem;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.why-monobank p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.why-monobank ul {
+    list-style-type: none;
+    font-size: 1.2rem;
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.why-monobank ul li {
+    margin-bottom: 15px;
+}
+
+.why-monobank img {
+    max-width: 40%;
+    border-radius: 10px;
+}
+
+.button-container a {
+    background-color: #ff4c4c;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.about-monobank {
+    background: #2e2e2e;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.about-monobank h2 {
+    font-size: 2.5rem;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.about-monobank p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background: #222;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left, .footer-right {
+    width: 45%;
+    min-width: 300px;
+    text-align: left;
+}
+
+.footer-left ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    margin-bottom: 10px;
+}
+
+.footer-right p {
+    margin: 10px 0;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+.footer-links a {
+    color: #ff0000;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 8px;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+header.header-container {
+    transition: background-color 0.3s ease;
+}
+
+header.header-container:hover {
+    background-color: orange;
+}
+
+header h1 {
+    color: white;
+    padding: 20px;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header.header-container:hover h1 {
+    color: white;
+}
+
+.download-apps {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.download-item h3 {
+    font-size: 2rem;
+    color: #ff4c4c;
+    margin-bottom: 10px;
+}
+
+.download-item p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.download-item img {
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.meme-cat {
+    width: 110px;
+    height: auto;
+}
